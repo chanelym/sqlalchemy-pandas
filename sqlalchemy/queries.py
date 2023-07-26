@@ -5,4 +5,6 @@ from sqlalchemy import text
 
 from database.connector import session
 
-result = session.execute(text('SHOW TABLES;').execution_options(autocommit=True))
+# Use this result to check database connection
+# Need to create logging function
+result = session.execute(text('SHOW TABLES;'))
