@@ -4,7 +4,8 @@ from os import environ, path
 from dotenv import load_dotenv # Note: never forget to use .env file. Go girl <3 #
 
 basedir = path.abspath(path.dirname(__file__))
-load_dotenv(path.join(basedir, "../.env"))
+sys.path.insert(0, '')
+load_dotenv(path.join(basedir, ".env"))
 
 # Database connection variables
 

@@ -1,5 +1,7 @@
-# Open SQLAlchemy engine connection and keep its lifecycle #
+import sys
+sys.path.insert(0, '')
 
+# Open SQLAlchemy engine connection and keep its lifecycle #
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
