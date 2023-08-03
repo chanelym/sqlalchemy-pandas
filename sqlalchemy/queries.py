@@ -8,3 +8,4 @@ from database.connector import session
 # Use this result to check database connection
 # Need to create logging function
 result = session.execute(text('SHOW TABLES;'))
+print(result.fetchall())

@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "additionals",
+        "backref",
         "dotenv",
+        "onupdate",
         "sessionmaker",
         "sqlalchemy"
     ]
