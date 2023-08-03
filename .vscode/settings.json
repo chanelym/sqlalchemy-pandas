@@ -6,6 +6,7 @@
         "dotenv",
         "onupdate",
         "sessionmaker",
+        "skiprows",
         "sqlalchemy"
     ]
 }

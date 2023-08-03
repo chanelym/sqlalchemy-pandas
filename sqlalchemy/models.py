@@ -40,7 +40,7 @@ class Customer(Base):
     street = Column(String(255))
     number = Column(Integer)
     additionals = Column(String(255))
-    orders = relationship("Order", back_populates="costumer")
+    orders = relationship("Orders", back_populates="costumer")
     items = relationship("Item", back_populates="costumer")
 
     def __repr__(self):
@@ -52,35 +52,35 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     quantity = Column(Integer)
     total_price = Column(Float(50))
-    order_id = Column(Integer, ForeignKey("order.id"))
-    order = relationship("Order", back_populates="item")
-    product_id = Column(Integer, ForeignKey("product.id"))
+    orders_id = Column(Integer, ForeignKey("orders.id"), use_alter=True)
+    orders = relationship("Orders", back_populates="item")
+    product_id = Column(Integer, ForeignKey("product.id"), use_alter=True)
     product = relationship("Product", back_populates="item")
 
     def __repr__(self):
         return f"Item {self.name}"
 
-class Order(Base):
-    __tablename__ = "order"
+class Orders(Base):
+    __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime(timezone=True), default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     status = Column(String(255))
-    customer_id = Column(Integer, ForeignKey("customer.id"))
-    customer = relationship("Customer", back_populates="order")
-    items = relationship("Item", back_populates="order")
+    customer_id = Column(Integer, ForeignKey("customer.id"), use_alter=True)
+    customer = relationship("Customer", back_populates="orders")
+    items = relationship("Item", back_populates="orders")
 
     def __repr__(self):
-        return f"Order {self.name}"
+        return f"Orders {self.name}"
 
 class Product(Base):
     __tablename__ = "product"
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255))
-    number = Column(Float(50), index=True)
-    category_id = Column(Integer, ForeignKey("category.id"))
+    price = Column(Float(50), index=True)
+    category_id = Column(Integer, ForeignKey("category.id"), use_alter=True)
     category = relationship("Category", back_populates="product")
 
     def __repr__(self):

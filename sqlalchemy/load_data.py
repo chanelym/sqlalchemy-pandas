@@ -5,12 +5,17 @@ import pandas as pd
 
 from database.connector import engine
 
-categories = pd.read_csv('data/categories.csv').to_sql(con=engine, name="category", if_exists='replace', index=False)
+#categories = pd.read_csv('data/categories.csv', sep=',',quotechar='\'',encoding='utf8').set_index('name')
+#categories.to_sql('category', con=engine, if_exists='append')
 
-#customers = pd.read_csv('data/customers.csv').to_sql(con=engine, name="customers", if_exists='replace', index=False)
+#customers = pd.read_csv('data/customers.csv', sep=',',quotechar='\'',encoding='utf8').set_index('email')
+#customers.to_sql('customer', con=engine, if_exists='append')
 
-#items = pd.read_csv('data/items.csv').to_sql(con=engine, name="items", if_exists='replace', index=False)
+#items = pd.read_csv('data/items.csv', sep=',', quotechar='\'', encoding='utf8')
+#items.to_sql('item', con=engine, if_exists='append', index=False)
 
-#orders = pd.read_csv('data/orders.csv').to_sql(con=engine, name="orders", if_exists='replace', index=False)
+orders = pd.read_csv('data/orders.csv', sep=',', quotechar='\'', encoding='utf8')
+orders.to_sql('orders', con=engine, if_exists='append', index=False)
 
-#products = pd.read_csv('data/products.csv').to_sql(con=engine, name="products", if_exists='replace', index=False)
+#products = pd.read_csv('data/products.csv', sep=',',quotechar='\'',encoding='utf8', skiprows=[4]).set_index('price')
+#products.to_sql('product', con=engine, if_exists='append')
