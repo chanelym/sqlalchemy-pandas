@@ -3,6 +3,8 @@
         "additionals",
         "backref",
         "categoryid",
+        "Dataframe",
+        "dataframes",
         "dotenv",
         "onupdate",
         "sessionmaker",
