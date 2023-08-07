@@ -14,13 +14,11 @@ def createDataFrame(table):
                 WHERE table_name = '{table}' \
                     AND table_schema = 'alchemy'"
 
-    table_df = pd.DataFrame(pd.read_sql_query(table_query, con=engine))
-    return table_df
+    dataframe = pd.DataFrame(pd.read_sql_query(table_query, con=engine))
+    return dataframe
 
-customer_df = createDataFrame("customer")
-item_df = createDataFrame("item")
-orders_df = createDataFrame("orders")
-product_df = createDataFrame("product")
+for eachTable in tables:
+    globals()[f'df_{eachTable}'] = createDataFrame(eachTable)
 
-data = pd.concat([category_df, customer_df, item_df, orders_df, product_df])
+data = pd.concat([df_category, df_customer, df_item, df_orders, df_product])
 print(data)
